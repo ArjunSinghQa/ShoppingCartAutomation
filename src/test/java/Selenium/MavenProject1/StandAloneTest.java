@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -22,12 +23,13 @@ public class StandAloneTest {
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().window().maximize();
 		driver.get("https://rahulshettyacademy.com/client");
 		driver.findElement(By.id("userEmail")).sendKeys("arjunsingh308569@gmail.com");
 		driver.findElement(By.id("userPassword")).sendKeys("Bangari@308569");
 		driver.findElement(By.id("login")).click();
 		
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(15));
 		 wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".mb-3")));
 		 
 		List<WebElement> products = driver.findElements(By.cssSelector(".mb-3"));
@@ -37,7 +39,10 @@ public class StandAloneTest {
 	    prod.findElement(By.cssSelector(".card-body button:last-of-type")).click();
 	    
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
+	    
 	    wait.until(ExpectedConditions.invisibilityOfElementLocated((By.cssSelector(".ng-animating"))));
+	    
+	    
 	    
 	    driver.findElement(By.cssSelector("[routerlink*=cart]")).click();
 	    
@@ -51,16 +56,21 @@ public class StandAloneTest {
 	    
 	    //hello
 	    
+	    //By using actions class we can also do the interactions like sending texts and other things
+	    // we can use console to check the css -- $('[placeholder='Select Country']')
+		Actions a = new Actions(driver);
+		a.sendKeys(driver.findElement(By.cssSelector("[placeholder='Select Country']")), "india").build().perform();
 		
 		
-	
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ta-results")));
 		
+		driver.findElement(By.xpath("(//button[contains(@class,'ta-item')])[2]")).click();
+		driver.findElement(By.cssSelector(".action__submit")).click();
 		
+		String confirmMessage = driver.findElement(By.cssSelector(".hero-primary")).getText();
+		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
 		
-		
-		
-		
-		
+		driver.close();
 		
 		
 		
