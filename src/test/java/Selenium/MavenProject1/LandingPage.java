@@ -1,12 +1,13 @@
 package Selenium.MavenProject1;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LandingPage {
+import Selenium.AbstractComponents.AbstractComponent;
+
+public class LandingPage extends AbstractComponent {
 	
 	// first of all this page's driver does not know about the driver of main class
 	// we can fetch the driver from main class as this is the first thing that needs to be done
@@ -19,6 +20,7 @@ public class LandingPage {
 	
     WebDriver driver;
 	public LandingPage(WebDriver driver) {
+		super(driver); // for sending driver from child class to parent class we use super keyword
 		this.driver = driver ;
 		PageFactory.initElements(driver,this);
 	}
@@ -45,11 +47,13 @@ public class LandingPage {
 	@FindBy(id="login")
 	WebElement submit;
 	
-	public void loginApplication(String Email, String userPassword) //actions method for webElements
+	public ProductCatalogue loginApplication(String Email, String userPassword) //actions method for webElements
 	{
 		userEmail.sendKeys(Email);
 		userpassword.sendKeys(userPassword);
 		submit.click();
+		ProductCatalogue pc = new ProductCatalogue(driver);
+		return pc ;
 	}
 	
 	public void goTo() 

@@ -2,13 +2,9 @@ package Selenium.MavenProject1;
 
 import java.time.Duration;
 import java.util.List;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -24,54 +20,28 @@ public class StandAloneTest {
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		driver.manage().window().maximize();
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(15));
 		
 		LandingPage lp = new LandingPage(driver);
 		lp.goTo();
-		lp.loginApplication("arjunsingh308569@gmail.com", "Bangari@308569");
 		
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(15));
-		 wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".mb-3")));
-		 
-		List<WebElement> products = driver.findElements(By.cssSelector(".mb-3"));
+		ProductCatalogue pc = lp.loginApplication("arjunsingh308569@gmail.com", "Bangari@308569");
+		List<WebElement> products = pc.getProductlist();
+		pc.productAddToCart(productname);
 		
-	    WebElement prod = products.stream().filter(product->product.findElement(By.cssSelector("b")).
-	    getText().equals(productname)).findFirst().orElse(null);
-	    prod.findElement(By.cssSelector(".card-body button:last-of-type")).click();
-	    
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#toast-container")));
-	    
-	    wait.until(ExpectedConditions.invisibilityOfElementLocated((By.cssSelector(".ng-animating"))));
-	    
-	    driver.findElement(By.cssSelector("[routerlink*=cart]")).click();
-	    
-	    List<WebElement>  cartproducts =  driver.findElements(By.cssSelector(".cartSection h3"));
-	    
-	    Boolean match = cartproducts.stream().anyMatch(cartproduct->cartproduct.getText().equalsIgnoreCase(productname));
-	    
-	    Assert.assertTrue(match);
-	    
-	    driver.findElement(By.cssSelector(".totalRow button")).click();
-	    
-	    //hello
-	    
-	    //By using actions class we can also do the interactions like sending texts and other things
-	    // we can use console to check the css -- $('[placeholder='Select Country']')
-		Actions a = new Actions(driver);
-		a.sendKeys(driver.findElement(By.cssSelector("[placeholder='Select Country']")), "india").build().perform();
+		CartPage cp = pc.goToCartPage();
+		Boolean match = cp.VerifyProductDisplay(productname);
+		Assert.assertTrue(match);
 		
-		
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ta-results")));
-		
-		driver.findElement(By.xpath("(//button[contains(@class,'ta-item')])[2]")).click();
-		driver.findElement(By.cssSelector(".action__submit")).click();
-		
-		String confirmMessage = driver.findElement(By.cssSelector(".hero-primary")).getText();
-		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
+		CheckOutPage cop = cp.goToCheckout();
+		cop.selectCountry("india");
+		ConfirmationPage confirmationPage = cop.submitOrder();
+		String confirmationMessage = confirmationPage.getConfirmationMessage();
+		Assert.assertTrue(confirmationMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
 		
 		driver.close();
 		
-		
-		
+
 	}
 	
 	
