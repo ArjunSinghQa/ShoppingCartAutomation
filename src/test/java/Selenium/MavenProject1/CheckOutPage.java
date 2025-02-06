@@ -21,7 +21,6 @@ public class CheckOutPage extends AbstractComponent{
 		PageFactory.initElements(driver,this);
 	}
 	
-	
 	@FindBy(css="[placeholder='Select Country']")
 	WebElement country;
 	
