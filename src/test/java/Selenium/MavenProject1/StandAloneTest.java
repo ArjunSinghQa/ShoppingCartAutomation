@@ -12,9 +12,6 @@ public class StandAloneTest extends BaseTest {
 	public void submitOrder() throws Exception
 	{
 		String productname = "IPHONE 13 PRO";
-		
-		LandingPage landingpage = launchApplication();
-		
 		ProductCatalogue pc = landingpage.loginApplication("arjunsingh308569@gmail.com", "Bangari@308569");
 		List<WebElement> products = pc.getProductlist();
 		pc.productAddToCart(productname);
@@ -28,9 +25,6 @@ public class StandAloneTest extends BaseTest {
 		ConfirmationPage confirmationPage = cop.submitOrder();
 		String confirmationMessage = confirmationPage.getConfirmationMessage();
 		Assert.assertTrue(confirmationMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
-		
-		driver.close();
-		
 
 	}
 	

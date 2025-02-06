@@ -5,6 +5,8 @@
     <classes>
       <class name="Selenium.MavenProject1.StandAloneTest">
         <methods>
+          <include name="teardown"/>
+          <include name="launchApplication"/>
           <include name="submitOrder"/>
         </methods>
       </class> <!-- Selenium.MavenProject1.StandAloneTest -->
