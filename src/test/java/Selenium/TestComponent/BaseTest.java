@@ -17,6 +17,7 @@ public class BaseTest {
 	public WebDriver driver;
 	public LandingPage landingpage ;
 	
+	
 	public WebDriver initializeDriver() throws Exception
 	{
 		Properties prop = new Properties();

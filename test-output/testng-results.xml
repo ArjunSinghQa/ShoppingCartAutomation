@@ -1,25 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-02-06T22:34:20 IST" name="Default suite" finished-at="2025-02-06T22:34:44 IST" duration-ms="23467">
+  <suite started-at="2025-02-10T22:19:02 IST" name="Suite" finished-at="2025-02-10T22:19:45 IST" duration-ms="43127">
     <groups>
     </groups>
-    <test started-at="2025-02-06T22:34:20 IST" name="Default test" finished-at="2025-02-06T22:34:44 IST" duration-ms="23467">
-      <class name="Selenium.MavenProject1.StandAloneTest">
-        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Selenium.MavenProject1.StandAloneTest@433defed]" started-at="2025-02-06T22:34:21 IST" name="launchApplication" finished-at="2025-02-06T22:34:28 IST" duration-ms="7097" status="PASS">
+    <test started-at="2025-02-10T22:19:02 IST" name="Test" finished-at="2025-02-10T22:19:45 IST" duration-ms="43127">
+      <class name="Selenium.Tests.ErrorValidationTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Selenium.Tests.ErrorValidationTest@55de24cc]" started-at="2025-02-10T22:19:21 IST" name="launchApplication" finished-at="2025-02-10T22:19:25 IST" duration-ms="3892" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchApplication -->
-        <test-method signature="submitOrder()[pri:0, instance:Selenium.MavenProject1.StandAloneTest@433defed]" started-at="2025-02-06T22:34:28 IST" name="submitOrder" finished-at="2025-02-06T22:34:44 IST" duration-ms="16150" status="PASS">
+        <test-method signature="submitOrder()[pri:0, instance:Selenium.Tests.ErrorValidationTest@55de24cc]" started-at="2025-02-10T22:19:25 IST" name="submitOrder" finished-at="2025-02-10T22:19:26 IST" duration-ms="585" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- submitOrder -->
-        <test-method is-config="true" signature="teardown()[pri:0, instance:Selenium.MavenProject1.StandAloneTest@433defed]" started-at="2025-02-06T22:34:44 IST" name="teardown" finished-at="2025-02-06T22:34:44 IST" duration-ms="157" status="PASS">
+        <test-method is-config="true" signature="teardown()[pri:0, instance:Selenium.Tests.ErrorValidationTest@55de24cc]" started-at="2025-02-10T22:19:26 IST" name="teardown" finished-at="2025-02-10T22:19:26 IST" duration-ms="88" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-      </class> <!-- Selenium.MavenProject1.StandAloneTest -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- Selenium.Tests.ErrorValidationTest -->
+      <class name="Selenium.Tests.SubmitOrderTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Selenium.Tests.SubmitOrderTest@dc7df28]" started-at="2025-02-10T22:19:26 IST" name="launchApplication" finished-at="2025-02-10T22:19:30 IST" duration-ms="4136" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="submitOrder()[pri:0, instance:Selenium.Tests.SubmitOrderTest@dc7df28]" started-at="2025-02-10T22:19:30 IST" name="submitOrder" finished-at="2025-02-10T22:19:45 IST" duration-ms="14684" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submitOrder -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:Selenium.Tests.SubmitOrderTest@dc7df28]" started-at="2025-02-10T22:19:45 IST" name="teardown" finished-at="2025-02-10T22:19:45 IST" duration-ms="112" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- Selenium.Tests.SubmitOrderTest -->
+      <class name="Selenium.Tests.StandAloneTest">
+        <test-method is-config="true" signature="launchApplication()[pri:0, instance:Selenium.Tests.StandAloneTest@3f4faf53]" started-at="2025-02-10T22:19:02 IST" name="launchApplication" finished-at="2025-02-10T22:19:07 IST" duration-ms="4780" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- launchApplication -->
+        <test-method signature="submitOrder()[pri:0, instance:Selenium.Tests.StandAloneTest@3f4faf53]" started-at="2025-02-10T22:19:07 IST" name="submitOrder" finished-at="2025-02-10T22:19:21 IST" duration-ms="14693" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submitOrder -->
+        <test-method is-config="true" signature="teardown()[pri:0, instance:Selenium.Tests.StandAloneTest@3f4faf53]" started-at="2025-02-10T22:19:21 IST" name="teardown" finished-at="2025-02-10T22:19:21 IST" duration-ms="110" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- Selenium.Tests.StandAloneTest -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

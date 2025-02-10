@@ -1,12 +1,18 @@
-package Selenium.MavenProject1;
+package Selenium.Tests;
 
 import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import Selenium.MavenProject1.CartPage;
+import Selenium.MavenProject1.CheckOutPage;
+import Selenium.MavenProject1.ConfirmationPage;
+import Selenium.MavenProject1.ProductCatalogue;
 import Selenium.TestComponent.BaseTest;
 
-public class StandAloneTest extends BaseTest {
+public class SubmitOrderTest extends BaseTest {
 	
 	@Test
 	public void submitOrder() throws Exception
