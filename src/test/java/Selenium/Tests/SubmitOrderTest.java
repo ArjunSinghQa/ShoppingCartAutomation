@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import Selenium.MavenProject1.CartPage;
@@ -17,11 +18,11 @@ public class SubmitOrderTest extends BaseTest {
 	
 	
 	String productname = "IPHONE 13 PRO";
-	@Test
-	public void submitOrder() throws Exception
+	@Test(dataProvider="getdata",groups= {"Purchase"})
+	public void submitOrder(String username,String password, String productname) throws Exception
 	{
 		
-		ProductCatalogue pc = landingpage.loginApplication("arjunsingh308569@gmail.com", "Bangari@308569");
+		ProductCatalogue pc = landingpage.loginApplication(username, password);
 		List<WebElement> products = pc.getProductlist();
 		pc.productAddToCart(productname);
 		
@@ -44,6 +45,13 @@ public class SubmitOrderTest extends BaseTest {
 		OrderPage op = pc.goToOrderPage();
 		Assert.assertTrue(op.VerifyOrderDisplay(productname));
 		
+	}
+	
+	
+	@DataProvider
+	public Object[][] getdata()
+	{
+		return new Object[][] {{"arjunsingh308569@gmail.com","Bangari@308569","IPHONE 13 PRO"},{"arjunsih308569@gmail.com","Bangari@30569","IPHONE 13 PRO"},{"arjh308569@gmail.com","Bangari@38569","IPHONE 13 PRO"}};
 	}
 	
 	

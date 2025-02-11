@@ -8,7 +8,7 @@ import Selenium.TestComponent.BaseTest;
 
 public class ErrorValidationTest extends BaseTest {
 	
-	@Test
+	@Test(groups= {"ErrorHandling"})
 	public void submitOrder() throws Exception
 	{
 		String productname = "IPHONE 13 PRO";

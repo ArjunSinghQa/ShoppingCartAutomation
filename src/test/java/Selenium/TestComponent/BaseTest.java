@@ -37,7 +37,7 @@ public class BaseTest {
 		return driver;
 	}
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public LandingPage launchApplication () throws Exception 
 	{
 	    initializeDriver();
@@ -46,9 +46,10 @@ public class BaseTest {
 		return landingpage;
 		
 	}
+	//We have always run = true for these two methods as testng takes only group headed methods while execution.But if there are prerequisites in running a message
+	// then it will fail. So always run =true is required for such methods.
 	
-	
-	@AfterMethod
+	@AfterMethod(alwaysRun=true)
 	public void teardown()
 	{
 		driver.close();
