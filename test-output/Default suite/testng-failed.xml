@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Selenium.MavenProject1.StandAloneTest">
+      <class name="Selenium.Tests.SubmitOrderTest">
         <methods>
           <include name="teardown"/>
+          <include name="orderHistoryTest"/>
           <include name="launchApplication"/>
-          <include name="submitOrder"/>
+          <include name="submitOrder" invocation-numbers="1"/>
         </methods>
-      </class> <!-- Selenium.MavenProject1.StandAloneTest -->
+      </class> <!-- Selenium.Tests.SubmitOrderTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -1,5 +1,6 @@
 package Selenium.Tests;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -19,15 +20,15 @@ public class SubmitOrderTest extends BaseTest {
 	
 	String productname = "IPHONE 13 PRO";
 	@Test(dataProvider="getdata",groups= {"Purchase"})
-	public void submitOrder(String username,String password, String productname) throws Exception
+	public void submitOrder(HashMap<String, String> input) throws Exception
 	{
 		
-		ProductCatalogue pc = landingpage.loginApplication(username, password);
+		ProductCatalogue pc = landingpage.loginApplication(input.get("email"), input.get("password"));
 		List<WebElement> products = pc.getProductlist();
-		pc.productAddToCart(productname);
+		pc.productAddToCart(input.get("productname"));
 		
 		CartPage cp = pc.goToCartPage();
-		Boolean match = cp.VerifyProductDisplay(productname);
+		Boolean match = cp.VerifyProductDisplay(input.get("productname"));
 		Assert.assertTrue(match);
 		
 		CheckOutPage cop = cp.goToCheckout();
@@ -51,8 +52,29 @@ public class SubmitOrderTest extends BaseTest {
 	@DataProvider
 	public Object[][] getdata()
 	{
-		return new Object[][] {{"arjunsingh308569@gmail.com","Bangari@308569","IPHONE 13 PRO"},{"arjunsih308569@gmail.com","Bangari@30569","IPHONE 13 PRO"},{"arjh308569@gmail.com","Bangari@38569","IPHONE 13 PRO"}};
+		/*
+		 * HashMap<String, String> map = new HashMap<String, String>();
+		 *  map.put("email",
+		 *"arjunsingh308569@gmail.com"); map.put("password", "Bangari@308569");
+		 * map.put("productname","IPHONE 13 PRO");
+		 * 
+		 * HashMap<String, String> map1 = new HashMap<String, String>();
+		 * map1.put("email", "arjunsih308569@gmail.com"); map1.put("password",
+		 * "Bangari@30569"); map1.put("productname","IPHONE 13 PRO");
+		 */
+		
+		return new Object[][] {{map},{map1}};
 	}
+	
+	
+	/*
+	 * @DataProvider public Object[][] getdata() {
+	 * 
+	 * return new Object[][]
+	 * {{"arjunsingh308569@gmail.com","Bangari@308569","IPHONE 13 PRO"},{
+	 * "arjunsih308569@gmail.com","Bangari@30569","IPHONE 13 PRO"}}; }
+	 */
+	
 	
 	
 
