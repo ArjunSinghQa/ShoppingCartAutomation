@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -60,6 +62,15 @@ public class BaseTest {
 		return data;
 	}
 
+	public String getScreenShot(String testcaseName, WebDriver driver) throws IOException
+	{
+		TakesScreenshot sc = (TakesScreenshot)driver;
+		File source = sc.getScreenshotAs(OutputType.FILE);
+		File file = new File(System.getProperty("user.dir")+ "//reports//" + testcaseName + ".png");
+		FileUtils.copyFile(source, file);
+		return System.getProperty("user.dir")+ "//reports//" + testcaseName + ".png";
+		
+	}
 	
 	@BeforeMethod(alwaysRun=true)
 	public LandingPage launchApplication () throws Exception 
