@@ -16,7 +16,7 @@ public class MainMethodOverloading {
 		}
 		
 		public static void main(int x) {
-			System.out.println("main with int arguments" + "" +x);
+			System.out.println("main with int arguments" + " " +x);
 			main();
 			
 		}
